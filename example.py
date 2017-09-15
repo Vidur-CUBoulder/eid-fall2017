@@ -19,15 +19,22 @@ import sys
 import os
 import datetime
 
-__author__ = "Bruce Montgomery and Bhallaji Venkatesankulathusundaram"
-__copyright__ = "Copyright (C) 2017 by Bruce Montgomery and Bhallaji Venkatesankulathusundaram"
+__author__ = "Vidur Sarin"
+__copyright__ = "Copyright (C) 2017 by Vidur Sarin"
 #
 # Redistribution, modification or use of this software in source or binary
 # forms is permitted as long as the files maintain this copyright. Users are
 # permitted to modify this and use it to learn about the field of embedded
-# software. Bruce Montgomery, Bhallaji Venkatesankulathusundaram, and the University of Colorado
+# software. Vidur Sarin, and the University of Colorado
 # are not liable for any misuse of this material.
 #
+
+# Check if the version of python being run is 3.
+if(sys.version_info > (3, 0)):
+    pass
+else:
+    print ("Please run this program in version 3.x+")
+    sys.exit()
 
 class Dog(object):
     """Dog: an example of a Python class from https://docs.python.org/3/tutorial/classes.html"""
@@ -45,11 +52,12 @@ class Dog(object):
 def walker(name):
     """walker: an example of a python function"""
     dog1 = Dog(name)
-    dog1.add_trick("Roll Over")
-    print("Walking a new dog:")
-    print("  The kind of this thing is ",dog1.kind)
-    print("  This dog is ",dog1.name)
-    print("  It knows these tricks - ",dog1.tricks)
+    dog1.add_trick('Jump')
+    dog1.add_trick('Roll')
+    print ('Walking a new dog:')
+    print ('The kind of this thing is ',dog1.kind)
+    print ('This dog is ',dog1.name)
+    print ('It knows these tricks - ',dog1.tricks)
 			
 # You can run this code from a command line - something like
 # C:\Source> python example.py Fido
