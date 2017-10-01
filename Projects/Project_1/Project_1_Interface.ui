@@ -1,24 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DisplayWidget</class>
- <widget class="QDockWidget" name="DisplayWidget">
+ <class>DisplayWindow</class>
+ <widget class="QMainWindow" name="DisplayWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>523</width>
-    <height>318</height>
+    <width>774</width>
+    <height>381</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>DockWidget</string>
+   <string>Temperature &amp; Humidity Display </string>
   </property>
-  <widget class="QWidget" name="dockWidgetContents">
+  <property name="dockNestingEnabled">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="SetAlarm_PB">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>220</y>
+      <width>99</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Set Alarm</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Time_Label">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>140</y>
+      <width>68</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Time</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Time_Value">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>140</y>
+      <width>271</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>0.00</string>
+    </property>
+   </widget>
    <widget class="QLabel" name="Temperature_Label">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>36</y>
+      <x>270</x>
+      <y>79</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -38,8 +92,8 @@
    <widget class="QLabel" name="Humidity_Label">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>70</y>
+      <x>270</x>
+      <y>110</y>
       <width>81</width>
       <height>21</height>
      </rect>
@@ -55,68 +109,30 @@
      <string>Humidity</string>
     </property>
    </widget>
-   <widget class="QLabel" name="Time_Label">
+   <widget class="QLabel" name="Humidity_Value">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>100</y>
-      <width>68</width>
-      <height>17</height>
+      <x>450</x>
+      <y>110</y>
+      <width>141</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>14</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>Time</string>
+     <string>0.00</string>
     </property>
    </widget>
    <widget class="QLabel" name="Temperature_Value">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>37</y>
-      <width>101</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>0.00</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Humidity_Value">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>70</y>
-      <width>101</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>0.00</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Time_Value">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>100</y>
-      <width>101</width>
+      <x>450</x>
+      <y>80</y>
+      <width>141</width>
       <height>20</height>
      </rect>
     </property>
@@ -132,8 +148,8 @@
    <widget class="QPushButton" name="Refresh_PB">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>180</y>
+      <x>170</x>
+      <y>220</y>
       <width>99</width>
       <height>27</height>
      </rect>
@@ -145,8 +161,8 @@
    <widget class="QPushButton" name="Graph_PB">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>180</y>
+      <x>330</x>
+      <y>220</y>
       <width>99</width>
       <height>27</height>
      </rect>
@@ -155,20 +171,18 @@
      <string>Graph</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="SetAlarm_PB">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>180</y>
-      <width>99</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Set Alarm</string>
-    </property>
-   </widget>
   </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>774</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
