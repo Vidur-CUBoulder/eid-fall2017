@@ -13,7 +13,6 @@ from PyQt4 import QtCore, QtGui
 DHT_PIN  = 4
 DHT_TYPE = Adafruit_DHT.DHT22
 
-
 # Import the created interface
 from project1_interface import Ui_DisplayWindow
 
@@ -31,9 +30,23 @@ class Main(QtGui.QMainWindow):
         self.timer.start()
 
         self.ui.Refresh_PB.clicked.connect(self.f_Refresh)
-        self.ui.Graph_PB.clicked.connect(self.f_Graph)
-        #self.ui.SetAlarm_PB.clicked.connect(self.f_Alarm)
-   
+        #self.ui.Graph_PB.clicked.connect(self.f_Graph)
+        
+
+    def f_Humidity_Alarm(self):
+        val_humidity = self.ui.lineEdit.text()
+        if(float(humidity) > float(val_humidity)):
+            self.ui.alarm_display_label.setStyleSheet('color:red')
+        else:
+            self.ui.alarm_display_label.setStyleSheet('color:default')
+    
+    def f_Temp_Alarm(self):
+        val_temp = self.ui.lineEdit_2.text()
+        if(float(temp) >= float(val_temp)):
+            self.ui.alarm_display_label_2.setStyleSheet('color:red')
+        else:
+            self.ui.alarm_display_label_2.setStyleSheet('color:default')
+
     def f_Graph(self):
         humidity, temp = Adafruit_DHT.read(DHT_TYPE, DHT_PIN)
         times = pd.date_range('2017-10-06', periods=500, freq='1min')
@@ -53,15 +66,30 @@ class Main(QtGui.QMainWindow):
         self.ui.Humidity_Value.setText("0.00")
         self.ui.Temperature_Value.setText("0.00")
         self.ui.Time_Value.setText("00:00:00")
+        self.ui.alarm_display_label.setStyleSheet('color:default')
+        self.ui.alarm_display_label_2.setStyleSheet('color:default')
+        self.ui.lineEdit.setText(" ")
+        self.ui.lineEdit_2.setText(" ")
     
     def Time_Display(self):
         self.ui.Time_Value.setText(QtCore.QDateTime.currentDateTime().toString("hh:mm:ss"))
+        global humidity
+        global temp
         humidity, temp = Adafruit_DHT.read(DHT_TYPE, DHT_PIN)
-        humidity = str("{:0.2f}%".format(humidity))
-        y_graph = [humidity]
-        temp = str("{:0.2f}*".format(temp))
+        humidity = str(humidity)
+        temp = str(temp)
         self.ui.Humidity_Value.setText(humidity)
         self.ui.Temperature_Value.setText(temp)
+        
+        try:
+            self.f_Humidity_Alarm()
+        except ValueError:
+            pass
+        
+        try:
+            self.f_Temp_Alarm()
+        except ValueError:
+            pass
 
 
 if __name__ == '__main__':
